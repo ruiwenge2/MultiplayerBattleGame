@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home - MultiPong</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" href="/img/icons/favicon.png">
+  </head>
+  <body>
+    <div class="page">
+      <%- include("nav.html") %>
+      <div class="main-content">
+        <% if(!loggedIn){ %>
+        <h1 style="margin-top:50px">Hi! Please <a href="/login">login</a> or <a href="/signup">sign up</a> so that you can play MultiPong.</h1>
+        <% } else { %>
+        <h1 style="margin-top:50px">Hello, <%= user %>!</h1>
+        <h2>Click <a href="/join">here</a> to play MultiPong.</h2>
+        <% } %>
+        <h2>Click <a href="/howtoplay">here</a> if you don't know how to play.</h2>
+      </div>
+    </div>
+  </body>
+</html>

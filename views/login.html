@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login - MultiPong</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/loginsignup.css" rel="stylesheet">
+    <link rel="icon" href="/img/icons/favicon.png">
+  </head>
+  <body>
+    <div class="page">
+      <%- include("nav.html") %>
+      <div class="main-content">
+        <h1>Login</h1><br>
+        <form action="" method="post">
+          <h3>Username: <h3><input name="username" required><br><br>
+          <h3>Password: </h3><input type="password" name="password" required><br><br>
+          <input type="submit" value="Login">
+          <br><br><br>
+          <% if(error){ %>
+          <div class="error-message"><%= error %></div>
+          <% } %>
+        </form><br>
+        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+.page {
+  height:100vh;
+}
+form {
+  width:60%;
+  margin-left:20%;
+  margin-right:20%;
+}
+input {
+  font-size:15px;
+  padding:10px;
+  width:50%;
+  font-family:'Roboto';
+}
+input[type="submit"] {
+  background:#095c80;
+  border:none;
+  height:50px;
+  color:white;
+  transition:all 0.3s ease-in-out;
+  border-radius:10px;
+}
+input[type="submit"]:hover {
+  background:#075070;
+  cursor:pointer;
+}
+.error-message {
+  width:60%;
+  margin-right:20%;
+  margin-left:20%;
+  border:2px solid red;
+  background:#ffa3af;
+  color:black;
+  border-radius:3px;
+  font-size:20px;
+  padding:10px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Join Game - MultiPong</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link rel="icon" href="/img/icons/favicon.png">
+  </head>
+  <body>
+    <div class="page">
+      <%- include("nav.html") %>
+      <div class="main-content">
+        <h1>Join Game</h1>
+        <h2>Enter the name of the room to play:</h2>
+        <input id="room" placeholder="Type here" style="font-size:20px; width:200px"><br><br>
+        <button onclick="chooseRoom()" class="button">Enter room</button><br><br>
+        <button onclick="invite()" class="button">Invite someone</button><br><br>
+        <h2>Or play against the computer</h2>
+        <button onclick="location.href = '/play'" class="button">Play</button>
+      </div>
+    </div>
+    <script>
+      var input = document.getElementById("room");
+
+      input.addEventListener("keydown", e => {
+        if(e.key == "Enter") chooseRoom();
+      });
+
+      function chooseRoom(){
+        let room = input.value;
+        location.href = "/game/" + room;
+      }
+
+      function invite(){
+        promptmodal("Invite someone", "Enter the name of the room first:")
+        .then(room => {
+          promptmodal("Invite someone", "Enter the user you want to invite:")
+          .then(username => {
+            socket.emit("new invitation", {to:username, from:user, room:room});
+            alertmodal("Invite someone", `You have invited ${username} to the room <span style="color:blue">${room}</span>!`)
+            .then(() => location.href = "/game/" + room);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
