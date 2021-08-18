@@ -105,5 +105,35 @@ class Pikachu extends Character {
   }
 }
 
+class Hercules extends Character {
+  constructor(){
+    super("Hercules");
+  }
+}
+
+class Jedi extends Character {
+  constructor(){
+    super("Jedi");
+  }
+}
+
+class Voldemort extends Character {
+  constructor(){
+    super("Voldemort");
+  }
+}
+
+class Thanos extends Character {
+  constructor(){
+    super("Thanos");
+  }
+}
+
+class Medusa extends Character {
+  constructor(){
+    super("Medusa");
+  }
+}
+
 const s = new Spiderman();
 const p = new Pikachu();
