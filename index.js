@@ -121,9 +121,9 @@ app.get("/game/:room", (req, res) => {
     length = Object.keys(users[room]).length;
     if(length < 2){
       if(length == 0){
-        res.render("game/multiplayer/player1.html", {user:f.getUser(req), room:room, loggedIn:true});
+        res.render("player1.html", {user:f.getUser(req), room:room, loggedIn:true});
       } else {
-        res.render("game/multiplayer/player2.html", {user:f.getUser(req), room:room, otheruser:Object.values(users[room])[0], loggedIn:true});
+        res.render("player2.html", {user:f.getUser(req), room:room, otheruser:Object.values(users[room])[0], loggedIn:true});
       }
     } else {
       res.render("error.html", {title:"Connect 4", content:`<h1 style="margin-top:50px;">Sorry, this room already has 2 players. Go join another.</h1>`, loggedIn:true, user:f.getUser(req)});
