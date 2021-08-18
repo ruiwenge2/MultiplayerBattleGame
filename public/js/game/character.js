@@ -1,4 +1,4 @@
-var value, damage1, damage2, type;
+var value, value1, value2, type, randint;
 class Character {
   constructor(name){
     this.name = name;
@@ -8,6 +8,9 @@ class Character {
 
     this.moves["attack"] = this.attack;
     this.moves["heal"] = this.heal;
+  }
+  status(){
+    print(`${this.name} health: ${this.health}`);
   }
   attack(enemy, damage = -1){
     if(damage == -1){
@@ -27,4 +30,5 @@ class Character {
     type = "heal";
     value = n;
   }
+
 }
