@@ -1,3 +1,4 @@
+var value, damage1, damage2, type;
 class Character {
   constructor(name){
     this.name = name;
@@ -17,12 +18,13 @@ class Character {
     enemy.health -= damage;
     print(`${this.name} did  ${damage} damage to ${enemy.name}`);
     type = "attack";
+    value = damage;
   }
-  heal(enemy){
-    n = random(25, 40);
+  heal(enemy, n = random(25, 40)){
     n *= this.energy;
     this.health += round(n);
     print(`${this.name} healed self ${n}`);
     type = "heal";
+    value = n;
   }
 }

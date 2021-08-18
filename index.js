@@ -151,18 +151,6 @@ io.on("connection", socket => {
     socket.broadcast.to(room).emit("joined", user);
     console.log(`${user} joined the room ${room}`);
   });
-  socket.on("movedown", room => {
-    socket.broadcast.to(room).emit("movedown");
-  });
-  socket.on("moveup", room => {
-    socket.broadcast.to(room).emit("moveup");
-  });
-  socket.on("endmovedown", room => {
-    socket.broadcast.to(room).emit("endmovedown");
-  });
-  socket.on("endmoveup", room => {
-    socket.broadcast.to(room).emit("endmoveup");
-  });
   socket.on("disconnect", () => {
     for(i of Object.keys(users)){
       if(Object.keys(users[i]).includes(socket.id)){
