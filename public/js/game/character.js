@@ -15,12 +15,14 @@ class Character {
     damage *= this.energy;
     damage = round(damage);
     enemy.health -= damage;
-    print(`${this.name} did  ${damage} damage to ${enemy.name}`)
+    print(`${this.name} did  ${damage} damage to ${enemy.name}`);
+    type = "attack";
   }
   heal(enemy){
     n = random(25, 40);
     n *= this.energy;
     this.health += round(n);
-    print(`${this.name} healed self ${n}`)
+    print(`${this.name} healed self ${n}`);
+    type = "heal";
   }
 }
