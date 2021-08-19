@@ -61,6 +61,13 @@ class Pikachu extends Character {
     this.health += 20;
     await sleep(1);
     this.attack(enemy, damage);
+    this.specialmove -= 1;
+    if(this.specialmove > 0){
+      print(self.specialmove + " time left to use this move.")
+    } else {
+      print("You cannot use this move anymore.");
+      delete this.moves["pika block"];
+    }
   }
   async evolve(enemy){
     this.name = "Raichu"
@@ -76,7 +83,7 @@ class Pikachu extends Character {
     this.moves["wild charge"] = this.wild_charge;
     this.moves["raichu block"] = this.raichu_block;
     this.moves["unevolve"] = this.unevolve;
-    this.specialmove1 = 2;
+    this.specialmove = 2;
   }
   thunder_punch(enemy, damage = random(45, 50)){
     this.attack(enemy, damage);
@@ -89,6 +96,13 @@ class Pikachu extends Character {
     this.health += 25;
     await sleep(1);
     this.attack(enemy, damage);
+    this.specialmove -= 1;
+    if(this.specialmove > 0){
+      print(self.specialmove + " time left to use this move.")
+    } else {
+      print("You cannot use this move anymore.");
+      delete this.moves["pika block"];
+    }
   }
   async unevolve(enemy){
     this.name = "Pikachu";
@@ -101,7 +115,8 @@ class Pikachu extends Character {
     this.moves["thunder shock"] = this.thunder_shock;
     this.moves["tail slap"] = this.tail_slap;
     this.moves["pika block"] = this.pika_block;
-    this.moves["evolve"] = this.evolve;
+    this.moves["evolve"] = this.evolve
+    this.specialmove = 2;
   }
 }
 
