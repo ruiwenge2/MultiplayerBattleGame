@@ -63,8 +63,9 @@ class Pikachu extends Character {
     this.attack(enemy, damage);
     this.specialmove -= 1;
     if(this.specialmove > 0){
-      print(self.specialmove + " time left to use this move.")
+      print(this.specialmove + " time left to use this move.");
     } else {
+      await sleep(1);
       print("You cannot use this move anymore.");
       delete this.moves["pika block"];
     }
@@ -98,8 +99,9 @@ class Pikachu extends Character {
     this.attack(enemy, damage);
     this.specialmove -= 1;
     if(this.specialmove > 0){
-      print(self.specialmove + " time left to use this move.")
+      print(this.specialmove + " time left to use this move.");
     } else {
+      await sleep(1);
       print("You cannot use this move anymore.");
       delete this.moves["pika block"];
     }
@@ -153,6 +155,30 @@ class Hercules extends Character {
 class Jedi extends Character {
   constructor(){
     super("Jedi");
+    delete this.moves["attack"];
+    this.moves["lightsaber slash"] = this.attack;
+    this.moves["force whirlwind"] = this.force_attack;
+    this.moves["battlemind"] = this.force_mind;
+    this.specialmove = 2
+  }
+  force_mind(enemy){
+    this.energy += 0.2;
+    print("Meditation increases the concentration and willpower of " + this.name);
+    print(this.name + " has increased energy.");
+    if(this.energy >= 1.8){
+      delete this.moves["battlemind"];
+    }
+  }
+  force_attack(enemy){
+    this.attack(enemy, 60);
+    this.specialmove -= 1;
+    if(this.specialmove > 0){
+      print(this.specialmove + " time left to use this move.")
+    } else {
+      await sleep(1);
+      print("You cannot use this move anymore.");
+      delete this.moves["force whirlwind"];
+    }
   }
 }
 
