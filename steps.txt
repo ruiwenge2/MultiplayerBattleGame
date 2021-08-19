@@ -1,0 +1,3 @@
+ - create character classes
+ - create html for game page
+ - create js code for game
