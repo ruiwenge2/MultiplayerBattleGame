@@ -30,5 +30,4 @@ class Character {
     type = "heal";
     value = n;
   }
-
 }

@@ -123,6 +123,30 @@ class Pikachu extends Character {
 class Hercules extends Character {
   constructor(){
     super("Hercules");
+    this.moves["arrow shots"] = this.arrow_shots;
+    this.moves["club strike"] = this.club_strike;
+    this.moves["equalize healths"] = this.equalize_healths;
+  }
+  arrow_shots(enemy, chance = random(1, 100), damage1 = random(40, 45), damage2 = 0){
+    if(chance <= 75){
+      this.attack(enemy, damage1);
+    } else {
+      print("Hercules missed!");
+    }
+    type = "chances";
+    value1 = damage1;
+    value2 = damage2;
+    randint = chance;
+  }
+  club_strike(enemy){
+    this.attack(enemy, 35);
+  }
+  equalize_healths(enemy){
+    if(this.health < enemy.health){
+      print("This move will make Hercules's health equal to the enemy's.");
+      difference = enemy.health - this.health;
+      this.health += difference;
+    }
   }
 }
 
