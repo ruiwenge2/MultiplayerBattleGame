@@ -227,7 +227,7 @@ class Thanos extends Character {
   smash(enemy, chance = random(1, 100), damage1 = random(25), owndamage = random(5, 15)){
     damage = random(25, 35);
     this.attack(enemy, damage);
-    if(random() < 0.5){
+    if(chance < 50){
       this.attack(this, owndamage);
     }
     type = "owndamage";
