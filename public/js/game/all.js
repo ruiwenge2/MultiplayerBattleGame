@@ -240,7 +240,30 @@ class Thanos extends Character {
 class Medusa extends Character {
   constructor(){
     super("Medusa");
-
+    this.moves["claw slice"] = this.claw_slice;
+    this.moves["stone attack"] = this.stone_attack;
+    this.moves["snake bite"] = this.snake_bite;
+  }
+  async stone_attack(enemy, chance = random(1, 100), damage1 = 50, damage2 = 0){
+    print("DUCK!");
+    await sleep(1);
+    if(chance <= 50){
+      this.attack(enemy, 50);
+    } else {
+      print("The attack did nothing!");
+    }
+  }
+  claw_slice(enemy){
+    this.attack(enemy, 35);
+  }
+  async snake_bite(enemy, chance = random(1, 100), damage1 = random(40, 45), damage2 = random(15, 25)){
+    if(chance <= 60){
+      this.attack(enemy, damage1);
+    } else {
+      await sleep(1);
+        print("The bite wasn't that bad!");
+        self.attack(enemy, damage2);
+    }
   }
 }
 
