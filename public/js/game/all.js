@@ -16,7 +16,7 @@ class Spiderman extends Character {
     if(chance <= 75){
       this.attack(enemy, damage1);
     } else {
-      print("Spiderman didn't do a good kick...") // for now
+      print("Spiderman didn't do a good kick...");
       await sleep(1);
       this.attack(enemy, damage2);
     }

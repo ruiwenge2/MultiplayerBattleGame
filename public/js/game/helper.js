@@ -12,5 +12,5 @@ function sleep(number){
   });
 }
 function print(text){
-  console.log(text);
+  console.log(text); // for now
 }
