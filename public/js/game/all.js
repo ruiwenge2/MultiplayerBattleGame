@@ -117,7 +117,7 @@ class Pikachu extends Character {
     this.moves["thunder shock"] = this.thunder_shock;
     this.moves["tail slap"] = this.tail_slap;
     this.moves["pika block"] = this.pika_block;
-    this.moves["evolve"] = this.evolve
+    this.moves["evolve"] = this.evolve;
     this.specialmove = 2;
   }
 }
