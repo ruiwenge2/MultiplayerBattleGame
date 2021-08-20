@@ -236,6 +236,7 @@ class Thanos extends Character {
 class Medusa extends Character {
   constructor(){
     super("Medusa");
+    
   }
 }
 
