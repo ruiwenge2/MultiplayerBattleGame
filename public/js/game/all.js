@@ -191,7 +191,7 @@ class Voldemort extends Character {
     this.moves["regeneration"] = this.heal
     this.moves["create Horcrux"] = this.create_Horcrux
   }
-  avadakedavra(enemy, chance = random(1, 100, value1 = 50, owndamage = 50){
+  avadakedavra(enemy, chance = random(1, 100), value1 = 50, owndamage = 50){
     print("AVADA KEDAVRA!");
     if(chance <= 75){
       this.attack(enemy, value1);
@@ -236,7 +236,7 @@ class Thanos extends Character {
 class Medusa extends Character {
   constructor(){
     super("Medusa");
-    
+
   }
 }
 
