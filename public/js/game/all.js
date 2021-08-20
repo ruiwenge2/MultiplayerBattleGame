@@ -187,11 +187,11 @@ class Voldemort extends Character {
     super("Voldemort");
     delete this.moves["attack"];
     this.moves["crucio"] = this.attack;
-    this.moves["killing curse"] = this.avadakedavra
-    this.moves["regeneration"] = this.heal
-    this.moves["create Horcrux"] = this.create_Horcrux
+    this.moves["killing curse"] = this.avadakedavra;
+    this.moves["regeneration"] = this.heal;
+    this.moves["create Horcrux"] = this.create_Horcrux;
   }
-  avadakedavra(enemy, chance = random(1, 100), value1 = 50, owndamage = 50){
+  avadakedavra(enemy, chance = random(1, 100), damage1 = 50, owndamage = 50){
     print("AVADA KEDAVRA!");
     if(chance <= 75){
       this.attack(enemy, value1);
@@ -218,18 +218,22 @@ class Voldemort extends Character {
 class Thanos extends Character {
   constructor(){
     super("Thanos");
-    this.moves["smash"] = this.smash
-    this.moves["Thanos Snap"] = this.finger_snap
+    this.moves["smash"] = this.smash;
+    this.moves["Thanos Snap"] = this.finger_snap;
   }
   finger_snap(enemy, damage = random(50, 70)){
     this.attack(enemy, damage);
   }
-  smash(enemy, chance = random(1, 100), value1 = random(25), owndamage = random(5, 15)){
+  smash(enemy, chance = random(1, 100), damage1 = random(25), owndamage = random(5, 15)){
     damage = random(25, 35);
     this.attack(enemy, damage);
     if(random() < 0.5){
       this.attack(this, owndamage);
     }
+    type = "owndamage";
+    value1 = damage1;
+    oppovalue = owndamage;
+    randint = chance;
   }
 }
 
