@@ -71,8 +71,8 @@ class Pikachu extends Character {
     }
   }
   async evolve(enemy){
-    this.name = "Raichu"
-    this.health = 100
+    this.name = "Raichu";
+    this.health = 100;
     print("Pikachu evolving ...");
     await sleep(1);
     print("Pikachu evolved to Raichu!");
