@@ -146,7 +146,7 @@ class Hercules extends Character {
   equalize_healths(enemy){
     if(this.health < enemy.health){
       print("This move will make Hercules's health equal to the enemy's.");
-      difference = enemy.health - this.health;
+      let difference = enemy.health - this.health;
       this.health += difference;
     }
   }
@@ -169,7 +169,7 @@ class Jedi extends Character {
       delete this.moves["battlemind"];
     }
   }
-  force_attack(enemy){
+  async force_attack(enemy){
     this.attack(enemy, 60);
     this.specialmove -= 1;
     if(this.specialmove > 0){
@@ -185,12 +185,51 @@ class Jedi extends Character {
 class Voldemort extends Character {
   constructor(){
     super("Voldemort");
+    delete this.moves["attack"];
+    this.moves["crucio"] = this.attack;
+    this.moves["killing curse"] = this.avadakedavra
+    this.moves["regeneration"] = this.heal
+    this.moves["create Horcrux"] = this.create_Horcrux
+  }
+  avadakedavra(enemy, chance = random(1, 100, value1 = 50, owndamage = 50){
+    print("AVADA KEDAVRA!");
+    if(chance <= 75){
+      this.attack(enemy, value1);
+    } else {
+      print("Voldemort's curse rebounded!");
+      this.attack(this, owndamage);
+    }
+    type = "owndamage";
+    value1 = damage1;
+    oppovalue = owndamage;
+    randint = chance;
+  }
+  create_Horcrux(enemy){
+    if(this.health <= 50){
+      let difference = 100 - this.health;
+      this.health += difference;
+      print("Voldemort got {} more health.".format(difference));
+    } else {
+      this.health += 50;
+      print("Voldemort got 50 more health.");
+    }
   }
 }
-
 class Thanos extends Character {
   constructor(){
     super("Thanos");
+    this.moves["smash"] = this.smash
+    this.moves["Thanos Snap"] = this.finger_snap
+  }
+  finger_snap(enemy, damage = random(50, 70)){
+    this.attack(enemy, damage);
+  }
+  smash(enemy, chance = random(1, 100), value1 = random(25), owndamage = random(5, 15)){
+    damage = random(25, 35);
+    this.attack(enemy, damage);
+    if(random() < 0.5){
+      this.attack(this, owndamage);
+    }
   }
 }
 
@@ -202,3 +241,5 @@ class Medusa extends Character {
 
 const s = new Spiderman();
 const p = new Pikachu();
+const h = new Hercules();
+const j = new Jedi();

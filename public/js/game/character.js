@@ -1,4 +1,6 @@
-var value, value1, value2, type, randint;
+var value, value1, value2, type, randint, oppovalue;
+
+// types of moves: attack, heal, chances, owndamage
 class Character {
   constructor(name){
     this.name = name;
