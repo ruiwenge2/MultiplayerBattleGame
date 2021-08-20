@@ -271,3 +271,6 @@ const s = new Spiderman();
 const p = new Pikachu();
 const h = new Hercules();
 const j = new Jedi();
+const v = new Voldemort();
+const t = new Thanos();
+const m = new Medusa();
