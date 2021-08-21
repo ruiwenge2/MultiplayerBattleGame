@@ -9,6 +9,7 @@ const session = require('express-session');
 const db = new Database();
 const f = require("./functions");
 const users = {};
+const characters = ["Spiderman", "Pikachu", "Hercules", "Jedi", "Voldemort", "Thanos", "Medusa"];
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -31,7 +32,7 @@ app.get("/login", (req, res) => {
 app.post("/login", async (req, res) => {
   var username = req.body.username;
   var password = req.body.password;
-  if((await db.list()).includes(username) && (await db.get(username)) == password){
+  if((await db.list()).includes(username) && (await db.get(username)).p == password){
     req.session.username = username;
     res.redirect("/");
   } else {
@@ -75,7 +76,7 @@ app.post("/signup", (req, res) => {
             res.render("signup.html", {error:"No bots allowed!", loggedIn:false});
             return;
           }
-          db.set(newusername, newpassword).then(() => {
+          db.set(newusername, {p:newpassword, c:"Spiderman"}).then(() => {
             console.log("new account created");
             req.session.username = newusername;
             res.redirect("/");
@@ -88,12 +89,36 @@ app.post("/signup", (req, res) => {
   }
 });
 
-app.get("/join", (req, res) => {
+app.get("/join", async (req, res) => {
   if(!f.loggedIn(req)){
     res.redirect("/login");
     return;
   }
-  res.render("join.html", {loggedIn:true, user:f.getUser(req)});
+  let user = f.getUser(req);
+  let all = [...characters];
+  for(let i = 0; i < all.length; i++){
+    if(all[i] == (await f.getCharacter(user))){
+      let c = all[i];
+      all.splice(i, 1);
+      all = [c].concat(all);
+      break;
+    }
+  }
+  res.render("join.html", {loggedIn:true, user:user, characters:all});
+});
+
+app.get("/changecharacter", async (req, res) => {
+  let character = req.query.character;
+  if(!character){
+    res.send("No character provided.");
+    return;
+  }
+  if(!characters.includes(character)){
+    res.send("Invalid character provided.");
+    return;
+  }
+  await f.setCharacter(f.getUser(req), character);
+  res.send("Success");
 });
 
 app.get("/howtoplay", (req, res) => {
