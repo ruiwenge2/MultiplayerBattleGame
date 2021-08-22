@@ -10,6 +10,15 @@ const db = new Database();
 const f = require("./functions");
 const users = {};
 const characters = ["Spiderman", "Pikachu", "Hercules", "Jedi", "Voldemort", "Thanos", "Medusa"];
+const filetypes = {
+  "spiderman":"jpeg",
+  "pikachu":"png",
+  "hercules":"png",
+  "jedi":"jpeg",
+  "voldemort":"jpeg",
+  "thanos":"png",
+  "medusa":"png"
+}
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -134,25 +143,26 @@ app.get("/play", (req, res) => {
   console.log(f.getUser(req) + " is playing against the computer");
 });
 
-app.get("/game/:room", (req, res) => {
+app.get("/game/:room", async (req, res) => {
   if(!f.loggedIn(req)){
     res.redirect("/login");
     return;
   }
   let room = req.params.room;
   if(!Object.keys(users).includes(room)){
-      users[room] = {};
-    }
-    length = Object.keys(users[room]).length;
-    if(length < 2){
-      if(length == 0){
-        res.render("player1.html", {user:f.getUser(req), room:room, loggedIn:true});
-      } else {
-        res.render("player2.html", {user:f.getUser(req), room:room, otheruser:Object.values(users[room])[0], loggedIn:true});
-      }
+    users[room] = {};
+  }
+  length = Object.keys(users[room]).length;
+  if(length < 2){
+    let imgsrc = (await f.getCharacter(f.getUser(req))).toLowerCase();
+    if(length == 0){
+      res.render("player1.html", {user:f.getUser(req), room:room, loggedIn:true, character: (await f.getCharacter(f.getUser(req))), imgsrc: imgsrc, filetype:filetypes[imgsrc]});
     } else {
-      res.render("error.html", {title:"Connect 4", content:`<h1 style="margin-top:50px;">Sorry, this room already has 2 players. Go join another.</h1>`, loggedIn:true, user:f.getUser(req)});
-    };
+      res.render("player2.html", {user:f.getUser(req), room:room, otheruser:Object.values(users[room])[0], loggedIn:true});
+    }
+  } else {
+    res.render("error.html", {title:"Connect 4", content:`<h1 style="margin-top:50px;">Sorry, this room already has 2 players. Go join another.</h1>`, loggedIn:true, user:f.getUser(req)});
+  };
 });
 
 app.get("/game", (req, res) => {

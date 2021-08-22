@@ -1,0 +1,17 @@
+nav {
+  left:-300px;
+}
+.main-content {
+  width:100%;
+}
+#player1-image, #player2-image {
+  margin-top:20px;
+  height:400px;
+  width:auto;
+}
+#player1 {
+  float:right;
+}
+#player2 {
+  float:left;
+}
