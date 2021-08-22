@@ -9,6 +9,9 @@ nav {
   height:400px;
   width:auto;
 }
+#player1, #player2 {
+  margin:20px;
+}
 #player1 {
   float:right;
 }

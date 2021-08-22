@@ -10,15 +10,6 @@ const db = new Database();
 const f = require("./functions");
 const users = {};
 const characters = ["Spiderman", "Pikachu", "Hercules", "Jedi", "Voldemort", "Thanos", "Medusa"];
-const filetypes = {
-  "spiderman":"jpeg",
-  "pikachu":"png",
-  "hercules":"png",
-  "jedi":"jpeg",
-  "voldemort":"jpeg",
-  "thanos":"png",
-  "medusa":"png"
-}
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -154,11 +145,11 @@ app.get("/game/:room", async (req, res) => {
   }
   length = Object.keys(users[room]).length;
   if(length < 2){
-    let imgsrc = (await f.getCharacter(f.getUser(req))).toLowerCase();
     if(length == 0){
-      res.render("player1.html", {user:f.getUser(req), room:room, loggedIn:true, character: (await f.getCharacter(f.getUser(req))), imgsrc: imgsrc, filetype:filetypes[imgsrc]});
+      res.render("player1.html", {user:f.getUser(req), room:room, loggedIn:true, character: (await f.getCharacter(f.getUser(req)))});
     } else {
-      res.render("player2.html", {user:f.getUser(req), room:room, otheruser:Object.values(users[room])[0], loggedIn:true});
+      let otheruser = Object.values(users[room])[0];
+      res.render("player2.html", {user:f.getUser(req), room:room, otheruser:otheruser, othercharacter: (await f.getCharacter(otheruser)), character: (await f.getCharacter(f.getUser(req))),  loggedIn:true});
     }
   } else {
     res.render("error.html", {title:"Connect 4", content:`<h1 style="margin-top:50px;">Sorry, this room already has 2 players. Go join another.</h1>`, loggedIn:true, user:f.getUser(req)});
@@ -175,7 +166,7 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  res.status(404).render("error.html", {loggedIn:f.loggedIn(req), user:f.getUser(req), title:"Page Not Found", content:`<h1>Error 404</h1><h2>Page Not Found</h2><img src="/img/robot.jpeg" style="width:400px !important" style="border:none"><br><br><a href="/" style="color:white; font-size:20px">Go to home</a>`});
+  res.status(404).render("error.html", {loggedIn:f.loggedIn(req), user:f.getUser(req), title:"Page Not Found", content:`<h1>Error 404</h1><h2>Page Not Found</h2><img src="/img/robot.jpeg" style="width:400px" style="border:none"><br><br><a href="/" style="color:white; font-size:20px">Go to home</a>`});
 });
 
 io.on("connection", socket => {

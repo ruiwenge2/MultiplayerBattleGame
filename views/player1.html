@@ -12,14 +12,19 @@
       <div class="main-content">
         <p id="message">Waiting for another player to join...</p>
         <div id="player1">
-          <img id="player1-image" src="/img/characters/<%= imgsrc %>.<%= filetype %>"><br>
-          <%= character %> (<%= user %>)
+          <img id="player1-image" src="/img/characters/<%= character %>.png"><br>
+          <p><%= character %> (<%= user %>)</p>
         </div>
         <div id="player2">
-          <img id="player2-image">
+          <img id="player2-image"><br>
+          <p id="otherusercharacter"></p>
         </div>
       </div>
     </div>
+    <script>
+      const character = "<%= character %>";
+      const room = "<%= room %>";
+    </script>
     <script src="/js/modal.js"></script>
     <script src="/js/game/helper.js"></script>
     <script src="/js/game/character.js"></script>
