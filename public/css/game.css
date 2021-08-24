@@ -10,7 +10,7 @@ nav {
   width:auto;
 }
 #player1, #player2 {
-  margin:20px;
+  margin:40px;
 }
 #player1 {
   float:right;
@@ -18,4 +18,25 @@ nav {
 #player2 {
   float:left;
   display:none;
+}
+#player1-moves button, #player2-moves button {
+  width:100px;
+  height:30px;
+  margin:10px;
+  font-size:12.5px;
+  background:white;
+  color:blue;
+  border:1px solid blue;
+  border-radius:7.5px;
+  cursor:pointer;
+  user-select:none;
+  transition:all 0.3s ease-in-out;
+}
+#player1-moves button:hover, #player2-moves button:hover {
+  background:blue;
+  color:white;
+}
+
+#chat {
+  /* bottom:100px; */
 }

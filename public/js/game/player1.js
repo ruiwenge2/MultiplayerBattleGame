@@ -5,15 +5,19 @@ socket.emit("joined", room, user, character);
 socket.on("joined", (username, char2) => {
   document.getElementById("sound").play();
   document.getElementById("player2").style.display = "block";
-  document.getElementById("message").style.display = "none";
-  alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`);
+  document.getElementById("message").innerHTML = "";
   otheruser = username;
   othercharacter = char2;
-  console.log(char2)
   otherchar = dict[char2];
   updateStatus();
-  document.getElementById("player1-message").innerHTML = "Your turn. Choose a move:";
-  showMoves();
+  alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
+    document.getElementById("player1-message").innerHTML = "Your turn. Choose a move:";
+    showMoves()
+  });
+});
+
+socket.on("leave", username => {
+  alertmodal("Left!", `${username} has left the game!`).then(() => location.href = "/join");
 });
 
 function updateStatus(){
@@ -28,12 +32,22 @@ function updateStatus(){
 }
 
 function showMoves(){
+  document.getElementById("player1-moves").innerHTML = "";
   let moves = char.moves;
   for(let i of Object.keys(moves)){
-    document.getElementById("player1-moves").innerHTML += `<button>${i}</button><br>`;
+    let btn = document.createElement("button");
+    btn.innerHTML = i;
+    btn.onclick = () => {
+      move(i);
+    }
+    document.getElementById("player1-moves").appendChild(btn);
+    document.getElementById("player1-moves").innerHTML += "<br>";
   }
+  window.scrollTo(0, 5000)
 }
 
-function move(){
+function move(text){
 
 }
+
+window.open(location.href);

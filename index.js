@@ -152,7 +152,7 @@ app.get("/game/:room", async (req, res) => {
       res.render("player2.html", {user:f.getUser(req), room:room, otheruser:otheruser, othercharacter: (await f.getCharacter(otheruser)), character: (await f.getCharacter(f.getUser(req))),  loggedIn:true});
     }
   } else {
-    res.render("error.html", {title:"Connect 4", content:`<h1 style="margin-top:50px;">Sorry, this room already has 2 players. Go join another.</h1>`, loggedIn:true, user:f.getUser(req)});
+    res.render("error.html", {title:"Multiplayer Battle Game", content:`<h1 style="margin-top:50px;">Sorry, this room already has 2 players. Go join another.</h1>`, loggedIn:true, user:f.getUser(req)});
   };
 });
 
