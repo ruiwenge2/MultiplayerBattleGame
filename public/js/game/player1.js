@@ -5,6 +5,7 @@ socket.emit("joined", room, user, character);
 socket.on("joined", (username, char2) => {
   document.getElementById("sound").play();
   document.getElementById("player2").style.display = "block";
+  document.getElementById("chat").style.display = "block";
   document.getElementById("message").innerHTML = "";
   otheruser = username;
   othercharacter = char2;
@@ -41,9 +42,8 @@ function showMoves(){
       move(i);
     }
     document.getElementById("player1-moves").appendChild(btn);
-    document.getElementById("player1-moves").innerHTML += "<br>";
   }
-  window.scrollTo(0, 5000)
+  // window.scrollTo(0, window.innerHeight);
 }
 
 function move(text){

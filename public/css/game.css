@@ -11,6 +11,7 @@ nav {
 }
 #player1, #player2 {
   margin:40px;
+  width:500px;
 }
 #player1 {
   float:right;
@@ -20,7 +21,7 @@ nav {
   display:none;
 }
 #player1-moves button, #player2-moves button {
-  width:100px;
+  display:inline-block;
   height:30px;
   margin:10px;
   font-size:12.5px;
@@ -38,5 +39,6 @@ nav {
 }
 
 #chat {
+  display:none;
   /* bottom:100px; */
 }
