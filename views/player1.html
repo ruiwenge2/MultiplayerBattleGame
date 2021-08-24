@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home - MultiPong</title>
+    <title>Multiplayer Battle Game</title>
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/game.css" rel="stylesheet">
     <link rel="icon" href="/img/icons/favicon.png">
@@ -13,11 +13,16 @@
         <p id="message">Waiting for another player to join...</p>
         <div id="player1">
           <img id="player1-image" src="/img/characters/<%= character %>.png"><br>
-          <p><%= character %> (<%= user %>)</p>
+          <p id="names"><%= character %> (<%= user %>)</p>
+          Health: <span id="otherhealth">100</span><br><progress id="progress" value="100"></progress>
+          <p id="player1-message"></p>
+          <div id="player1-moves"></div>
         </div>
         <div id="player2">
           <img id="player2-image"><br>
-          <p id="otherusercharacter"></p>
+          <p id="othernames"></p>
+          Health: <span id="otherhealth">100</span><br><progress id="otherprogress" value="100"></progress>
+          <p id="player2-message"></p>
         </div>
       </div>
     </div>

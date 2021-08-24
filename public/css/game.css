@@ -17,4 +17,5 @@ nav {
 }
 #player2 {
   float:left;
+  display:none;
 }

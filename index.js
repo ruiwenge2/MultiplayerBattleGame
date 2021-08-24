@@ -170,12 +170,12 @@ app.get("/*", (req, res) => {
 });
 
 io.on("connection", socket => {
-  socket.on("joined", (room, user) => {
+  socket.on("joined", (room, user, character) => {
     if(!users[room]) users[room] = {};
     users[room][socket.id] = user;
     socket.join(room);
-    socket.broadcast.to(room).emit("joined", user);
-    console.log(`${user} joined the room ${room}`);
+    socket.broadcast.to(room).emit("joined", user, character);
+    console.log(`${user} joined the room ${room} with character ${character}`);
   });
   socket.on("disconnect", () => {
     for(i of Object.keys(users)){

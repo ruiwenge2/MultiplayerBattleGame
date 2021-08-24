@@ -11,9 +11,6 @@ class Character {
     this.moves["attack"] = this.attack;
     this.moves["heal"] = this.heal;
   }
-  status(){
-    print(`${this.name} health: ${this.health}`);
-  }
   attack(enemy, damage = -1){
     if(damage == -1){
       damage = random(20, 40);

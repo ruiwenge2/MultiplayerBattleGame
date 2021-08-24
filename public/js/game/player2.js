@@ -1,1 +1,1 @@
-socket.emit("joined", room, user);
+socket.emit("joined", room, user, character);
