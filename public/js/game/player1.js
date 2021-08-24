@@ -12,7 +12,7 @@ socket.on("joined", (username, char2) => {
   console.log(char2)
   otherchar = dict[char2];
   updateStatus();
-  document.getElementById("player1-message") = "Your turn. Choose a move:";
+  document.getElementById("player1-message").innerHTML = "Your turn. Choose a move:";
   showMoves();
 });
 
@@ -29,4 +29,11 @@ function updateStatus(){
 
 function showMoves(){
   let moves = char.moves;
+  for(let i of Object.keys(moves)){
+    document.getElementById("player1-moves").innerHTML += `<button>${i}</button><br>`;
+  }
+}
+
+function move(){
+
 }
