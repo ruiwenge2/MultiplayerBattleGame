@@ -50,4 +50,4 @@ function move(text){
 
 }
 
-window.open(location.href);
+window.open(location.href); // for testing
