@@ -29,5 +29,4 @@ function updateStatus(){
 
 function showMoves(){
   let moves = char.moves;
-
 }
