@@ -32,6 +32,16 @@ class Spiderman extends Character {
       delete this.moves["think"];
     }
   }
+  choosemove(string, enemy){
+    switch(string){
+      case "attack":this.attack(enemy); break;
+      case "heal":this.heal(enemy); break;
+      case "web shooter":this.web_shooter(enemy); break;
+      case "face punch":this.face_punch(enemy); break;
+      case "flying kick":this.flying_kick(enemy); break;
+      case "think":this.think(enemy); break;
+    }
+  }
 }
 
 class Pikachu extends Character {
@@ -119,6 +129,21 @@ class Pikachu extends Character {
     this.moves["pika block"] = this.pika_block;
     this.moves["evolve"] = this.evolve;
     this.specialmove = 2;
+  }
+
+  choosemove(string, enemy){
+    switch(string){
+      case "attack":this.attack(enemy); break;
+      case "heal":this.heal(enemy); break;
+      case "thunder shock":this.thunder_shock(enemy); break;
+      case "tail slap":this.tail_slap(enemy); break;
+      case "pika block":this.pika_block(enemy); break;
+      case "evolve":this.evolve(enemy); break;
+      case "thunder punch":this.thunder_punch(enemy); break;
+      case "wild charge":this.wild_charge(enemy); break;
+      case "raichu block":this.raichu_block(enemy); break;
+      case "unevolve":this.unevolve(enemy); break;
+    }
   }
 }
 
