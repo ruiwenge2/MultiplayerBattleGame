@@ -46,7 +46,7 @@ function showMoves(){
   // window.scrollTo(0, window.innerHeight);
 }
 
-async function move(text){
+function move(text){
   char.choosemove(text, otherchar).then(() => {
     let data = {};
     switch(type){
@@ -68,12 +68,16 @@ async function move(text){
         break;
     }
     data.type = type;
-    console.log(type);
+    console.log(data);
+    socket.emit("move", room, data);
+    document.getElementById("player1-message").innerHTML = "";
+    document.getElementById("player1-moves").innerHTML = "";
+    document.getElementById("player2-message").innerHTML = "Other player's turn.";
   });
 }
 
 function otherMove(text, data){
-  
+
 }
 
 setTimeout(function(){window.open(location.href)}, 1000); // for testing
