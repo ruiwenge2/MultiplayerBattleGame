@@ -13,6 +13,10 @@ class Spiderman extends Character {
     this.attack(enemy, damage);
   }
   async flying_kick(enemy, chance = random(1, 100), damage1 = random(35, 40), damage2 = random(20, 25)){
+    type = "chances";
+    value1 = damage1;
+    value2 = damage2;
+    randint = chance;
     if(chance <= 75){
       this.attack(enemy, damage1);
     } else {
@@ -20,10 +24,6 @@ class Spiderman extends Character {
       await sleep(1);
       this.attack(enemy, damage2);
     }
-    type = "chances";
-    value1 = damage1;
-    value2 = damage2;
-    randint = chance;
   }
   think(enemy){
     this.energy += 0.15;
@@ -32,14 +32,14 @@ class Spiderman extends Character {
       delete this.moves["think"];
     }
   }
-  choosemove(string, enemy){
+  async choosemove(string, enemy){
     switch(string){
-      case "attack":this.attack(enemy); break;
-      case "heal":this.heal(enemy); break;
-      case "web shooter":this.web_shooter(enemy); break;
-      case "face punch":this.face_punch(enemy); break;
-      case "flying kick":this.flying_kick(enemy); break;
-      case "think":this.think(enemy); break;
+      case "attack":await this.attack(enemy); break;
+      case "heal":await this.heal(enemy); break;
+      case "web shooter":await this.web_shooter(enemy); break;
+      case "face punch":await this.face_punch(enemy); break;
+      case "flying kick":await this.flying_kick(enemy); break;
+      case "think":await this.think(enemy); break;
     }
   }
 }
@@ -81,6 +81,7 @@ class Pikachu extends Character {
     }
   }
   async evolve(enemy){
+    type = "none";
     this.name = "Raichu";
     this.health = 100;
     print("Pikachu evolving ...");
@@ -117,6 +118,7 @@ class Pikachu extends Character {
     }
   }
   async unevolve(enemy){
+    type = "none";
     this.name = "Pikachu";
     this.health = 100;
     print("Raichu unevolved to Pikachu.");
@@ -131,18 +133,18 @@ class Pikachu extends Character {
     this.specialmove = 2;
   }
 
-  choosemove(string, enemy){
+  async choosemove(string, enemy){
     switch(string){
-      case "attack":this.attack(enemy); break;
-      case "heal":this.heal(enemy); break;
-      case "thunder shock":this.thunder_shock(enemy); break;
-      case "tail slap":this.tail_slap(enemy); break;
-      case "pika block":this.pika_block(enemy); break;
-      case "evolve":this.evolve(enemy); break;
-      case "thunder punch":this.thunder_punch(enemy); break;
-      case "wild charge":this.wild_charge(enemy); break;
-      case "raichu block":this.raichu_block(enemy); break;
-      case "unevolve":this.unevolve(enemy); break;
+      case "attack":await this.attack(enemy); break;
+      case "heal":await this.heal(enemy); break;
+      case "thunder shock":await this.thunder_shock(enemy); break;
+      case "tail slap":await this.tail_slap(enemy); break;
+      case "pika block":await this.pika_block(enemy); break;
+      case "evolve":await this.evolve(enemy); break;
+      case "thunder punch":await this.thunder_punch(enemy); break;
+      case "wild charge":await this.wild_charge(enemy); break;
+      case "raichu block":await this.raichu_block(enemy); break;
+      case "unevolve":await this.unevolve(enemy); break;
     }
   }
 }
@@ -175,13 +177,13 @@ class Hercules extends Character {
       this.health += difference;
     }
   }
-  choosemove(string, enemy){
+  async choosemove(string, enemy){
     switch(string){
-      case "attack":this.attack(enemy); break;
-      case "heal":this.heal(enemy); break;
-      case "arrow shots":this.arrow_shots(enemy); break;
-      case "club strike":this.club_strike(enemy); break;
-      case "equalize healths":this.equalize_healths(enemy); break;
+      case "attack":await this.attack(enemy); break;
+      case "heal":await this.heal(enemy); break;
+      case "arrow shots":await this.arrow_shots(enemy); break;
+      case "club strike":await this.club_strike(enemy); break;
+      case "equalize healths":await this.equalize_healths(enemy); break;
     }
   }
 }
@@ -214,12 +216,12 @@ class Jedi extends Character {
       delete this.moves["force whirlwind"];
     }
   }
-  choosemove(string, enemy){
+  async choosemove(string, enemy){
     switch(string){
-      case "lightsaber slash":this.attack(enemy); break;
-      case "heal":this.heal(enemy); break;
-      case "force whirlwind":this.force_attack(enemy); break;
-      case "battlemind":this.force_mind(enemy); break;
+      case "lightsaber slash":await this.attack(enemy); break;
+      case "heal":await this.heal(enemy); break;
+      case "force whirlwind":await this.force_attack(enemy); break;
+      case "battlemind":await this.force_mind(enemy); break;
     }
   }
 }
@@ -256,13 +258,13 @@ class Voldemort extends Character {
       print("Voldemort got 50 more health.");
     }
   }
-  choosemove(string, enemy){
+  async choosemove(string, enemy){
     switch(string){
-      case "crucio":this.attack(enemy); break;
-      case "heal":this.heal(enemy); break;
-      case "killing curse":this.avadakedavra(enemy); break;
-      case "regeneration":this.fheal(enemy); break;
-      case "create Horcrux":this.create_Horcrux(enemy); break;
+      case "crucio":await this.attack(enemy); break;
+      case "heal":await this.heal(enemy); break;
+      case "killing curse":await this.avadakedavra(enemy); break;
+      case "regeneration":await this.fheal(enemy); break;
+      case "create Horcrux":await this.create_Horcrux(enemy); break;
     }
   }
 }
@@ -286,12 +288,12 @@ class Thanos extends Character {
     oppovalue = owndamage;
     randint = chance;
   }
-  choosemove(string, enemy){
+  async choosemove(string, enemy){
     switch(string){
-      case "attack":this.attack(enemy); break;
-      case "heal":this.heal(enemy); break;
-      case "smash":this.smash(enemy); break;
-      case "Thanos Snap":this.finger_snap(enemy); break;
+      case "attack":await this.attack(enemy); break;
+      case "heal":await this.heal(enemy); break;
+      case "smash":await this.smash(enemy); break;
+      case "Thanos Snap":await this.finger_snap(enemy); break;
     }
   }
 }
@@ -324,13 +326,13 @@ class Medusa extends Character {
         self.attack(enemy, damage2);
     }
   }
-  choosemove(string, enemy){
+  async choosemove(string, enemy){
     switch(string){
-      case "attack":this.attack(enemy); break;
-      case "heal":this.heal(enemy); break;
-      case "claw slice":this.claw_slice(enemy); break;
-      case "stone attack":this.stone_attack(enemy); break;
-      case "snake bite":this.snake_bite(enemy); break;
+      case "attack":await this.attack(enemy); break;
+      case "heal":await this.heal(enemy); break;
+      case "claw slice":await this.claw_slice(enemy); break;
+      case "stone attack":await this.stone_attack(enemy); break;
+      case "snake bite":await this.snake_bite(enemy); break;
     }
   }
 }

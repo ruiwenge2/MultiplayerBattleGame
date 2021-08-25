@@ -46,8 +46,34 @@ function showMoves(){
   // window.scrollTo(0, window.innerHeight);
 }
 
-function move(text){
+async function move(text){
+  char.choosemove(text, otherchar).then(() => {
+    let data = {};
+    switch(type){
+      case "attack":
+        data.value = value;
+        break;
+      case "heal":
+        data.value = value;
+        break;
+      case "chances":
+        data.value1 = value1;
+        data.value2 = value2;
+        data.randint = randint;
+        break;
+      case "owndamage":
+        data.value1 = value1;
+        data.oppovalue = oppovalue;
+        data.randint = randint;
+        break;
+    }
+    data.type = type;
+    console.log(type);
+  });
+}
 
+function otherMove(text, data){
+  
 }
 
 setTimeout(function(){window.open(location.href)}, 1000); // for testing

@@ -192,6 +192,9 @@ io.on("connection", socket => {
     io.emit("new invitation", invitation);
     console.log(`${invitation.from} invited ${invitation.to} to the room ${invitation.room}`);
   });
+  socket.on("move", (room, data) => {
+    io.to(room).emit("move", data);
+  })
 });
 
 server.listen(3000, () => {

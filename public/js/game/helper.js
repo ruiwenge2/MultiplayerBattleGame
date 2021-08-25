@@ -12,5 +12,8 @@ function sleep(number){
   });
 }
 function print(text){
-  console.log(text); // for now
+  document.getElementById("allmoves").innerHTML += text + "<br>";
+}
+function clear(){
+  document.getElementById("allmoves").innerHTML = "";
 }

@@ -1,6 +1,6 @@
-var value, value1, value2, type, randint, oppovalue;
+var type, value, value1, value2, type, randint, oppovalue;
 
-// types of moves: attack, heal, chances, owndamage
+// types of moves: attack, heal, chances, owndamage, and none
 class Character {
   constructor(name){
     this.name = name;
@@ -11,7 +11,7 @@ class Character {
     this.moves["attack"] = this.attack;
     this.moves["heal"] = this.heal;
   }
-  attack(enemy, damage = -1){
+  async attack(enemy, damage = -1){
     if(damage == -1){
       damage = random(20, 40);
     }
@@ -22,7 +22,7 @@ class Character {
     type = "attack";
     value = damage;
   }
-  heal(enemy, n = random(25, 40)){
+  async heal(enemy, n = random(25, 40)){
     n *= this.energy;
     this.health += round(n);
     print(`${this.name} healed self ${n}`);
