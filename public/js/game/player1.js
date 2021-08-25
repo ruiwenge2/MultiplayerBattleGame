@@ -50,4 +50,4 @@ function move(text){
 
 }
 
-window.open(location.href); // for testing
+setTimeout(function(){window.open(location.href)}, 1000); // for testing
