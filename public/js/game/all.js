@@ -175,6 +175,15 @@ class Hercules extends Character {
       this.health += difference;
     }
   }
+  choosemove(string, enemy){
+    switch(string){
+      case "attack":this.attack(enemy); break;
+      case "heal":this.heal(enemy); break;
+      case "arrow shots":this.arrow_shots(enemy); break;
+      case "club strike":this.club_strike(enemy); break;
+      case "equalize healths":this.equalize_healths(enemy); break;
+    }
+  }
 }
 
 class Jedi extends Character {
@@ -203,6 +212,14 @@ class Jedi extends Character {
       await sleep(1);
       print("You cannot use this move anymore.");
       delete this.moves["force whirlwind"];
+    }
+  }
+  choosemove(string, enemy){
+    switch(string){
+      case "lightsaber slash":this.attack(enemy); break;
+      case "heal":this.heal(enemy); break;
+      case "force whirlwind":this.force_attack(enemy); break;
+      case "battlemind":this.force_mind(enemy); break;
     }
   }
 }
@@ -239,6 +256,15 @@ class Voldemort extends Character {
       print("Voldemort got 50 more health.");
     }
   }
+  choosemove(string, enemy){
+    switch(string){
+      case "crucio":this.attack(enemy); break;
+      case "heal":this.heal(enemy); break;
+      case "killing curse":this.avadakedavra(enemy); break;
+      case "regeneration":this.fheal(enemy); break;
+      case "create Horcrux":this.create_Horcrux(enemy); break;
+    }
+  }
 }
 class Thanos extends Character {
   constructor(){
@@ -259,6 +285,14 @@ class Thanos extends Character {
     value1 = damage1;
     oppovalue = owndamage;
     randint = chance;
+  }
+  choosemove(string, enemy){
+    switch(string){
+      case "attack":this.attack(enemy); break;
+      case "heal":this.heal(enemy); break;
+      case "smash":this.smash(enemy); break;
+      case "Thanos Snap":this.finger_snap(enemy); break;
+    }
   }
 }
 
@@ -288,6 +322,15 @@ class Medusa extends Character {
       await sleep(1);
         print("The bite wasn't that bad!");
         self.attack(enemy, damage2);
+    }
+  }
+  choosemove(string, enemy){
+    switch(string){
+      case "attack":this.attack(enemy); break;
+      case "heal":this.heal(enemy); break;
+      case "claw slice":this.claw_slice(enemy); break;
+      case "stone attack":this.stone_attack(enemy); break;
+      case "snake bite":this.snake_bite(enemy); break;
     }
   }
 }
