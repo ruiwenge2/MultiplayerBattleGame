@@ -5,7 +5,7 @@ socket.emit("joined", room, user, character);
 socket.on("joined", (username, char2) => {
   document.getElementById("sound").play();
   document.getElementById("player2").style.display = "block";
-  document.getElementById("chat").style.display = "block";
+  document.getElementById("chat").style.display = "block";  document.getElementById("allmoves-h1").style.display = "block";
   document.getElementById("message").innerHTML = "";
   otheruser = username;
   othercharacter = char2;

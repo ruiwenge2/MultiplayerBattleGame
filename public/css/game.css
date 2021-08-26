@@ -37,8 +37,9 @@ nav {
   background:blue;
   color:white;
 }
-
 #chat {
   display:none;
-  /* bottom:100px; */
+}
+#allmoves-h1 {
+  display:none;
 }
