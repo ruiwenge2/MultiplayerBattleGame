@@ -336,21 +336,3 @@ class Medusa extends Character {
     }
   }
 }
-
-const s = new Spiderman();
-const p = new Pikachu();
-const h = new Hercules();
-const j = new Jedi();
-const v = new Voldemort();
-const t = new Thanos();
-const m = new Medusa();
-
-const dict = {
-  "Spiderman":new Spiderman(),
-  "Pikachu":new Pikachu(),
-  "Hercules":new Hercules(),
-  "Jedi":new Jedi(),
-  "Voldemort":new Voldemort(),
-  "Thanos":new Thanos(),
-  "Medusa":new Medusa()
-};

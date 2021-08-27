@@ -1,3 +1,6 @@
  - ~~create character classes~~
- - create html for game page
- - create js code for game
+ - ~~create html for game page~~
+ - ~~create js code for game~~
+ - work on chat box
+ - check who wins
+ - add arguments for choosemove method for character classes besides spiderman and pikachu

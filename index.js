@@ -9,7 +9,8 @@ const session = require('express-session');
 const db = new Database();
 const f = require("./functions");
 const users = {};
-const characters = ["Spiderman", "Pikachu", "Hercules", "Jedi", "Voldemort", "Thanos", "Medusa"];
+const characters = {};
+const characterslist = ["Spiderman", "Pikachu", "Hercules", "Jedi", "Voldemort", "Thanos", "Medusa"];
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -95,7 +96,7 @@ app.get("/join", async (req, res) => {
     return;
   }
   let user = f.getUser(req);
-  let all = [...characters];
+  let all = [...characterslist];
   for(let i = 0; i < all.length; i++){
     if(all[i] == (await f.getCharacter(user))){
       let c = all[i];
@@ -113,7 +114,7 @@ app.get("/changecharacter", async (req, res) => {
     res.send("No character provided.");
     return;
   }
-  if(!characters.includes(character)){
+  if(!characterslist.includes(character)){
     res.send("Invalid character provided.");
     return;
   }
@@ -143,13 +144,17 @@ app.get("/game/:room", async (req, res) => {
   if(!Object.keys(users).includes(room)){
     users[room] = {};
   }
+  if(!Object.keys(characters).includes(room)){
+    characters[room] = {};
+  }
   length = Object.keys(users[room]).length;
   if(length < 2){
     if(length == 0){
       res.render("player1.html", {user:f.getUser(req), room:room, loggedIn:true, character: (await f.getCharacter(f.getUser(req)))});
     } else {
       let otheruser = Object.values(users[room])[0];
-      res.render("player2.html", {user:f.getUser(req), room:room, otheruser:otheruser, othercharacter: (await f.getCharacter(otheruser)), character: (await f.getCharacter(f.getUser(req))),  loggedIn:true});
+      let othercharacter = Object.values(characters[room])[0];
+      res.render("player2.html", {user:f.getUser(req), room:room, otheruser:otheruser, othercharacter: othercharacter, character: (await f.getCharacter(f.getUser(req))),  loggedIn:true});
     }
   } else {
     res.render("error.html", {title:"Multiplayer Battle Game", content:`<h1 style="margin-top:50px;">Sorry, this room already has 2 players. Go join another.</h1>`, loggedIn:true, user:f.getUser(req)});
@@ -173,6 +178,8 @@ io.on("connection", socket => {
   socket.on("joined", (room, user, character) => {
     if(!users[room]) users[room] = {};
     users[room][socket.id] = user;
+    if(!characters[room]) characters[room] = {};
+    characters[room][socket.id] = character;
     socket.join(room);
     socket.broadcast.to(room).emit("joined", user, character);
     console.log(`${user} joined the room ${room} with character ${character}`);
@@ -182,6 +189,7 @@ io.on("connection", socket => {
       if(Object.keys(users[i]).includes(socket.id)){
         let left = users[i][socket.id];
         delete users[i][socket.id];
+        delete characters[i][socket.id];
         io.to(i).emit("leave", left);
         console.log(`${left} left the room ${i}`);
         return;

@@ -21,10 +21,17 @@ socket.on("move", async data => {
       otherrandint = data.randint;
       break;
   }
+  clear();
+  print(`${otherchar.name} (${otheruser}): ${data.move}`);
   await otherchar.choosemove(data.move, char);
   updateStatus();
   showMoves();
 });
+
+socket.on("leave", username => {
+  alertmodal("Left!", `${username} has left the game!`).then(() => location.href = "/join");
+});
+
 function updateStatus(){
   document.getElementById("names").innerHTML = `${char.name} (${user})`;
   document.getElementById("othernames").innerHTML = `${otherchar.name} (${otheruser})`;
@@ -57,6 +64,8 @@ function showMoves(){
 }
 
 function move(text){
+  clear();
+  print(`${char.name} (${user}): ${text}`);
   char.choosemove(text, otherchar).then(() => {
     let data = {};
     data.move = text;

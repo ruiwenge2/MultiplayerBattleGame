@@ -60,6 +60,9 @@ socket.on("move", async data => {
       otherrandint = data.randint;
       break;
   }
+  
+  clear();
+  print(`${otherchar.name} (${otheruser}): ${data.move}`);
   await otherchar.choosemove(data.move, char);
   updateStatus();
   showMoves();
@@ -97,10 +100,11 @@ function showMoves(){
     }
     document.getElementById("player1-moves").appendChild(btn);
   }
-  // window.scrollTo(0, window.innerHeight);
 }
 
 function move(text){
+  clear();
+  print(`${char.name} (${user}): ${text}`);
   char.choosemove(text, otherchar).then(() => {
     let data = {};
     data.move = text;
