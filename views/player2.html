@@ -34,16 +34,18 @@
         </div>
       </div>
     </div>
+    <script src="/js/game/character.js"></script>
+    <script src="/js/game/all.js"></script>
     <script>
       const character = "<%= character %>";
       const otheruser = "<%= otheruser %>";
       const othercharacter = "<%= othercharacter %>";
+      const char = new <%= character %>();
+      const otherchar = new <%= othercharacter %>();
       const room = "<%= room %>";
     </script>
     <script src="/js/modal.js"></script>
     <script src="/js/game/helper.js"></script>
-    <script src="/js/game/character.js"></script>
-    <script src="/js/game/all.js"></script>
     <script src="/js/game/player2.js"></script>
   </body>
 </html>

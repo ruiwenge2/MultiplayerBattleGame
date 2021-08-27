@@ -1,8 +1,5 @@
 socket.emit("joined", room, user, character);
 
-const char = dict[character];
-const otherchar = dict[othercharacter];
-
 alertmodal("Joined!", `${otheruser} is already in this room and their character is ${othercharacter}! Have fun playing!`);
 
 socket.on("move", async data => {
@@ -25,8 +22,19 @@ socket.on("move", async data => {
       break;
   }
   await otherchar.choosemove(data.move, char);
+  updateStatus();
   showMoves();
 });
+function updateStatus(){
+  document.getElementById("names").innerHTML = `${char.name} (${user})`;
+  document.getElementById("othernames").innerHTML = `${otherchar.name} (${otheruser})`;
+  document.getElementById("player1-image").src = `/img/characters/${otherchar.name}.png`;
+  document.getElementById("player2-image").src = `/img/characters/${char.name}.png`;
+  document.getElementById("health").innerHTML = char.health;
+  document.getElementById("progress").value = char.health;
+  document.getElementById("otherhealth").innerHTML = otherchar.health;
+  document.getElementById("otherprogress").value = otherchar.health;
+}
 
 function showMoves(){
   othertype = undefined;
@@ -46,4 +54,35 @@ function showMoves(){
     }
     document.getElementById("player2-moves").appendChild(btn);
   }
+}
+
+function move(text){
+  char.choosemove(text, otherchar).then(() => {
+    let data = {};
+    data.move = text;
+    switch(type){
+      case "attack":
+        data.value = value;
+        break;
+      case "heal":
+        data.value = value;
+        break;
+      case "chances":
+        data.value1 = value1;
+        data.value2 = value2;
+        data.randint = randint;
+        break;
+      case "owndamage":
+        data.value1 = value1;
+        data.oppovalue = oppovalue;
+        data.randint = randint;
+        break;
+    }
+    data.type = type;
+    socket.emit("move", room, data);
+    document.getElementById("player2-message").innerHTML = "";
+    document.getElementById("player2-moves").innerHTML = "";
+    document.getElementById("player1-message").innerHTML = "Other player's turn to choose their move.";
+  });
+  updateStatus();
 }

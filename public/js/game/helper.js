@@ -12,7 +12,7 @@ function sleep(number){
   });
 }
 function print(text){
-  document.getElementById("allmoves").innerHTML += text + "<br>";
+  document.getElementById("allmoves").innerHTML += text + "<br><br>";
 }
 function clear(){
   document.getElementById("allmoves").innerHTML = "";

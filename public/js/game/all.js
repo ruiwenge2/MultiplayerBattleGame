@@ -346,11 +346,11 @@ const t = new Thanos();
 const m = new Medusa();
 
 const dict = {
-  "Spiderman":s,
-  "Pikachu":p,
-  "Hercules":h,
-  "Jedi":j,
-  "Voldemort":v,
-  "Thanos":t,
-  "Medusa":m
+  "Spiderman":new Spiderman(),
+  "Pikachu":new Pikachu(),
+  "Hercules":new Hercules(),
+  "Jedi":new Jedi(),
+  "Voldemort":new Voldemort(),
+  "Thanos":new Thanos(),
+  "Medusa":new Medusa()
 };

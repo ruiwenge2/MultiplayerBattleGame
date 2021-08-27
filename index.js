@@ -189,7 +189,7 @@ io.on("connection", socket => {
     }
   });
   socket.on("move", (room, data) => {
-    io.to(room).emit("move", data);
+    socket.broadcast.to(room).emit("move", data);
   });
   socket.on("new invitation", invitation => {
     io.emit("new invitation", invitation);
