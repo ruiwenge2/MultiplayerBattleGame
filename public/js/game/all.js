@@ -34,11 +34,11 @@ class Spiderman extends Character {
   }
   async choosemove(string, enemy){
     switch(string){
-      case "attack":await this.attack(enemy); break;
-      case "heal":await this.heal(enemy); break;
-      case "web shooter":await this.web_shooter(enemy); break;
-      case "face punch":await this.face_punch(enemy); break;
-      case "flying kick":await this.flying_kick(enemy); break;
+      case "attack":await this.attack(enemy, othervalue); break;
+      case "heal":await this.heal(enemy, othervalue); break;
+      case "web shooter":await this.web_shooter(enemy, othervalue); break;
+      case "face punch":await this.face_punch(enemy, othervalue); break;
+      case "flying kick":await this.flying_kick(enemy, otherrandint, othervalue1, othervalue2); break;
       case "think":await this.think(enemy); break;
     }
   }
@@ -135,15 +135,15 @@ class Pikachu extends Character {
 
   async choosemove(string, enemy){
     switch(string){
-      case "attack":await this.attack(enemy); break;
-      case "heal":await this.heal(enemy); break;
-      case "thunder shock":await this.thunder_shock(enemy); break;
+      case "attack":await this.attack(enemy, othervalue); break;
+      case "heal":await this.heal(enemy, othervalue); break;
+      case "thunder shock":await this.thunder_shock(enemy, otherrandint, othervalue1, othervalue2); break;
       case "tail slap":await this.tail_slap(enemy); break;
-      case "pika block":await this.pika_block(enemy); break;
+      case "pika block":await this.pika_block(enemy, othervalue); break;
       case "evolve":await this.evolve(enemy); break;
-      case "thunder punch":await this.thunder_punch(enemy); break;
-      case "wild charge":await this.wild_charge(enemy); break;
-      case "raichu block":await this.raichu_block(enemy); break;
+      case "thunder punch":await this.thunder_punch(enemy, othervalue); break;
+      case "wild charge":await this.wild_charge(enemy, othervalue); break;
+      case "raichu block":await this.raichu_block(enemy, othervalue); break;
       case "unevolve":await this.unevolve(enemy); break;
     }
   }
@@ -263,7 +263,7 @@ class Voldemort extends Character {
       case "crucio":await this.attack(enemy); break;
       case "heal":await this.heal(enemy); break;
       case "killing curse":await this.avadakedavra(enemy); break;
-      case "regeneration":await this.fheal(enemy); break;
+      case "regeneration":await this.heal(enemy); break;
       case "create Horcrux":await this.create_Horcrux(enemy); break;
     }
   }

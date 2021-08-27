@@ -1,0 +1,38 @@
+nav {
+  left:-300px;
+}
+.main-content {
+  width:100%;
+}
+#player1-image, #player2-image {
+  margin-top:20px;
+  height:400px;
+  width:auto;
+}
+#player1, #player2 {
+  margin:40px;
+  width:500px;
+}
+#player1 {
+  float:left;
+}
+#player2 {
+  float:right;
+}
+#player1-moves button, #player2-moves button {
+  display:inline-block;
+  height:30px;
+  margin:10px;
+  font-size:12.5px;
+  background:white;
+  color:blue;
+  border:1px solid blue;
+  border-radius:7.5px;
+  cursor:pointer;
+  user-select:none;
+  transition:all 0.3s ease-in-out;
+}
+#player1-moves button:hover, #player2-moves button:hover {
+  background:blue;
+  color:white;
+}

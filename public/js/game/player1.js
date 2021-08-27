@@ -1,4 +1,4 @@
-var otheruser, othercharacter, otherchar;
+var otheruser, othercharacter, otherchar, othermove;
 const char = dict[character];
 socket.emit("joined", room, user, character);
 
@@ -12,8 +12,7 @@ socket.on("joined", (username, char2) => {
   otherchar = dict[char2];
   updateStatus();
   alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
-    document.getElementById("player1-message").innerHTML = "Your turn. Choose a move:";
-    showMoves()
+    showMoves();
   });
 });
 
@@ -33,6 +32,16 @@ function updateStatus(){
 }
 
 function showMoves(){
+  othertype = undefined;
+  othervalue = undefined;
+  othervalue1 = undefined;
+  othervalue2 = undefined;
+  otherrandint = undefined;
+  otheroppovalue = undefined;
+  document.getElementById("player1-message").innerHTML = "Your turn. Choose a move:";
+  if(othermove){
+    document.getElementById("player1-message").innerHTML = "The other player has chosen their move. Your turn. Choose a move:"
+  }
   document.getElementById("player1-moves").innerHTML = "";
   let moves = char.moves;
   for(let i of Object.keys(moves)){
@@ -49,6 +58,7 @@ function showMoves(){
 function move(text){
   char.choosemove(text, otherchar).then(() => {
     let data = {};
+    data.move = text;
     switch(type){
       case "attack":
         data.value = value;
@@ -68,16 +78,16 @@ function move(text){
         break;
     }
     data.type = type;
-    console.log(data);
     socket.emit("move", room, data);
     document.getElementById("player1-message").innerHTML = "";
     document.getElementById("player1-moves").innerHTML = "";
     document.getElementById("player2-message").innerHTML = "Other player's turn.";
   });
+  updateStatus();
 }
 
 function otherMove(text, data){
-
+  othermove = true;
 }
 
 setTimeout(function(){window.open(location.href)}, 1000); // for testing

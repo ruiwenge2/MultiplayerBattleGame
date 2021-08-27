@@ -1,4 +1,5 @@
-var type, value, value1, value2, type, randint, oppovalue;
+var type, value, value1, value2, randint, oppovalue;
+var othertype, othervalue, othervalue1, othervalue2, otherrandint, otheroppovalue;
 
 // types of moves: attack, heal, chances, owndamage, and none
 class Character {
