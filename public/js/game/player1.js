@@ -153,5 +153,3 @@ function move(text){
   });
   updateStatus();
 }
-
-setTimeout(function(){window.open(location.href)}, 1000); // for testing
