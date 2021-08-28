@@ -179,9 +179,9 @@ class Hercules extends Character {
   }
   async choosemove(string, enemy){
     switch(string){
-      case "attack":await this.attack(enemy); break;
-      case "heal":await this.heal(enemy); break;
-      case "arrow shots":await this.arrow_shots(enemy); break;
+      case "attack":await this.attack(enemy, othervalue); break;
+      case "heal":await this.heal(enemy, othervalue); break;
+      case "arrow shots":await this.arrow_shots(enemy, otherrandint, othervalue1, othervalue2); break;
       case "club strike":await this.club_strike(enemy); break;
       case "equalize healths":await this.equalize_healths(enemy); break;
     }
@@ -218,8 +218,8 @@ class Jedi extends Character {
   }
   async choosemove(string, enemy){
     switch(string){
-      case "lightsaber slash":await this.attack(enemy); break;
-      case "heal":await this.heal(enemy); break;
+      case "lightsaber slash":await this.attack(enemy, othervalue); break;
+      case "heal":await this.heal(enemy, othervalue); break;
       case "force whirlwind":await this.force_attack(enemy); break;
       case "battlemind":await this.force_mind(enemy); break;
     }
@@ -238,7 +238,7 @@ class Voldemort extends Character {
   avadakedavra(enemy, chance = random(1, 100), damage1 = 50, owndamage = 50){
     print("AVADA KEDAVRA!");
     if(chance <= 75){
-      this.attack(enemy, value1);
+      this.attack(enemy, damage1);
     } else {
       print("Voldemort's curse rebounded!");
       this.attack(this, owndamage);
@@ -260,10 +260,10 @@ class Voldemort extends Character {
   }
   async choosemove(string, enemy){
     switch(string){
-      case "crucio":await this.attack(enemy); break;
-      case "heal":await this.heal(enemy); break;
-      case "killing curse":await this.avadakedavra(enemy); break;
-      case "regeneration":await this.heal(enemy); break;
+      case "crucio":await this.attack(enemy, othervalue); break;
+      case "heal":await this.heal(enemy, othervalue); break;
+      case "killing curse":await this.avadakedavra(enemy, otherrandint, othervalue1, otheroppovalue); break;
+      case "regeneration":await this.heal(enemy, othervalue); break;
       case "create Horcrux":await this.create_Horcrux(enemy); break;
     }
   }
@@ -277,9 +277,8 @@ class Thanos extends Character {
   finger_snap(enemy, damage = random(50, 70)){
     this.attack(enemy, damage);
   }
-  smash(enemy, chance = random(1, 100), damage1 = random(25), owndamage = random(5, 15)){
-    damage = random(25, 35);
-    this.attack(enemy, damage);
+  smash(enemy, chance = random(1, 100), damage1 = random(25, 35), owndamage = random(5, 15)){
+    this.attack(enemy, damage1);
     if(chance < 50){
       this.attack(this, owndamage);
     }
@@ -290,10 +289,10 @@ class Thanos extends Character {
   }
   async choosemove(string, enemy){
     switch(string){
-      case "attack":await this.attack(enemy); break;
-      case "heal":await this.heal(enemy); break;
-      case "smash":await this.smash(enemy); break;
-      case "Thanos Snap":await this.finger_snap(enemy); break;
+      case "attack":await this.attack(enemy, othervalue); break;
+      case "heal":await this.heal(enemy, othervalue); break;
+      case "smash":await this.smash(enemy, otherrandint, othervalue1, otheroppovalue); break;
+      case "Thanos Snap":await this.finger_snap(enemy, othervalue); break;
     }
   }
 }
@@ -328,11 +327,11 @@ class Medusa extends Character {
   }
   async choosemove(string, enemy){
     switch(string){
-      case "attack":await this.attack(enemy); break;
-      case "heal":await this.heal(enemy); break;
+      case "attack":await this.attack(enemy, othervalue); break;
+      case "heal":await this.heal(enemy, othervalue); break;
       case "claw slice":await this.claw_slice(enemy); break;
-      case "stone attack":await this.stone_attack(enemy); break;
-      case "snake bite":await this.snake_bite(enemy); break;
+      case "stone attack":await this.stone_attack(enemy, otherrandint, othervalue1, othervalue2); break;
+      case "snake bite":await this.snake_bite(enemy, otherrandint, othervalue1, othervalue2); break;
     }
   }
 }

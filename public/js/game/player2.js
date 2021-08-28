@@ -25,10 +25,19 @@ socket.on("move", async data => {
   print(`${otherchar.name} (${otheruser}): ${data.move}`);
   await otherchar.choosemove(data.move, char);
   updateStatus();
+  if(char.health <= 0){
+    showWinner(otherchar, otheruser, char, user);
+    return;
+  } 
+  if(otherchar.health <= 0){
+    showWinner(char, user, otherchar, otheruser);
+    return;
+  }
   showMoves();
 });
 
 socket.on("leave", username => {
+  document.getElementById("sound").play();
   alertmodal("Left!", `${username} has left the game!`).then(() => location.href = "/join");
 });
 
@@ -89,6 +98,14 @@ function move(text){
     }
     data.type = type;
     socket.emit("move", room, data);
+    if(char.health <= 0){
+      showWinner(otherchar, otheruser, char, user);
+      return;
+    } 
+    if(otherchar.health <= 0){
+      showWinner(char, user, otherchar, otheruser);
+      return;
+    }
     document.getElementById("player2-message").innerHTML = "";
     document.getElementById("player2-moves").innerHTML = "";
     document.getElementById("player1-message").innerHTML = "Other player's turn to choose their move.";

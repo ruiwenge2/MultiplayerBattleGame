@@ -17,3 +17,6 @@ function print(text){
 function clear(){
   document.getElementById("allmoves").innerHTML = "";
 }
+function showWinner(character, username, character2, username2){
+  setTimeout(function(){alertmodal("Game Ended!", `Because ${character2.name} (${username2}) has no more health, ${character.name} (${username}) has won the game!`).then(() => location.href = "/join")}, 1500);
+}
