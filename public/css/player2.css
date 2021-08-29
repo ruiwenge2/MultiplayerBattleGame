@@ -36,6 +36,12 @@ nav {
   background:blue;
   color:white;
 }
+#chat {
+  border:3px solid white;
+  height:350px;
+  width:300px;
+  margin: 0 auto;
+}
 @media only screen and (max-width: 1200px) {
   #player1, #player2, #chat, #moves {
     width:100%;

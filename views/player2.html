@@ -10,7 +10,7 @@
     <div class="page">
       <%- include("nav.html") %>
       <div class="main-content">
-        <audio id="chat-alert"><source src="/assets/chat_alert.mp3"></audio>
+        <audio id="chat-alert"><source src="/sounds/chat_alert.mp3"></audio>
         <div id="player2">
           <img id="player2-image" src="/img/characters/<%= character %>.png"><br>
           <p id="names"><%= character %> (<%= user %>)</p>
@@ -25,10 +25,10 @@
           <p id="player1-message">Other player's turn to choose their move.</p>
         </div>
         <div id="chat">
-          <h1>Chat!</h1>
+          <h1>Chat</h1>
           <div id="messages"></div>
           <input type="text" placeholder="Type your message here...">
-        </div><br><br><br><br><br><br>
+        </div><br><br><br>
         <h1 id="allmoves-h1">Moves</h1>
         <div id="allmoves">
           
