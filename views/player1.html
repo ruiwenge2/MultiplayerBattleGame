@@ -10,6 +10,7 @@
     <div class="page">
       <%- include("nav.html") %>
       <div class="main-content">
+        <audio id="chat-alert"><source src="/assets/chat_alert.mp3"></audio>
         <p id="message">Waiting for another player to join...</p>
         <div id="player1">
           <img id="player1-image" src="/img/characters/<%= character %>.png"><br>
@@ -46,5 +47,6 @@
     <script src="/js/modal.js"></script>
     <script src="/js/game/helper.js"></script>
     <script src="/js/game/player1.js"></script>
+    <script src="/js/game/chat.js"></script>
   </body>
 </html>

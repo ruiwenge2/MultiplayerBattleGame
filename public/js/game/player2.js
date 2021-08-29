@@ -22,6 +22,7 @@ socket.on("move", async data => {
       break;
   }
   clear();
+  focusMoves();
   print(`${otherchar.name} (${otheruser}): ${data.move}`);
   await otherchar.choosemove(data.move, char);
   updateStatus();
@@ -75,6 +76,7 @@ function showMoves(){
 function move(text){
   clear();
   print(`${char.name} (${user}): ${text}`);
+  focusMoves();
   char.choosemove(text, otherchar).then(() => {
     let data = {};
     data.move = text;
@@ -109,6 +111,6 @@ function move(text){
     document.getElementById("player2-message").innerHTML = "";
     document.getElementById("player2-moves").innerHTML = "";
     document.getElementById("player1-message").innerHTML = "Other player's turn to choose their move.";
+    updateStatus();
   });
-  updateStatus();
 }

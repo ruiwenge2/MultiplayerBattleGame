@@ -6,8 +6,8 @@ nav {
 }
 #player1-image, #player2-image {
   margin-top:20px;
-  height:400px;
-  width:auto;
+  height:350px;
+  width:400px;
 }
 #player1, #player2 {
   margin:40px;
@@ -42,4 +42,9 @@ nav {
 }
 #allmoves-h1 {
   display:none;
+}
+@media only screen and (max-width: 1200px) {
+  #player1, #player2, #chat, #moves {
+    width:100%;
+  }
 }

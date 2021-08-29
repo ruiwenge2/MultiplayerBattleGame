@@ -14,3 +14,29 @@
   background:blue;
   color:white;
 }
+body {
+  align-items: center;
+}
+#instruction {
+  width:700px;
+  text-align: center;
+  margin: 0 auto;
+  -webkit-animation-name: slide;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: slide;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-in-out;
+}
+@keyframes slide {
+  0% {
+    -webkit-transform: translate(-100px, 0);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    opacity: 1;
+  }
+}

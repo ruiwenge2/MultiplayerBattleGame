@@ -63,8 +63,8 @@ socket.on("move", async data => {
       otherrandint = data.randint;
       break;
   }
-  
   clear();
+  focusMoves();
   print(`${otherchar.name} (${otheruser}): ${data.move}`);
   await otherchar.choosemove(data.move, char);
   updateStatus();
@@ -115,6 +115,7 @@ function showMoves(){
 
 function move(text){
   clear();
+  focusMoves();
   print(`${char.name} (${user}): ${text}`);
   char.choosemove(text, otherchar).then(() => {
     let data = {};
@@ -150,6 +151,7 @@ function move(text){
     document.getElementById("player1-message").innerHTML = "";
     document.getElementById("player1-moves").innerHTML = "";
     document.getElementById("player2-message").innerHTML = "Other player's turn to choose their move.";
-  });
   updateStatus();
+  });
 }
+console.log(window.innerWidth)
