@@ -18,7 +18,7 @@ body {
   align-items: center;
 }
 #instruction {
-  width:700px;
+  width:80%;
   text-align: center;
   margin: 0 auto;
   -webkit-animation-name: slide;
