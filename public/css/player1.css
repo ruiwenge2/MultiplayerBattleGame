@@ -46,6 +46,7 @@ nav {
 }
 #messages {
   height:150px;
+  overflow:auto;
 }
 #allmoves-h1 {
   display:none;

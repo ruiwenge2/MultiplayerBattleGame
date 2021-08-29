@@ -199,6 +199,9 @@ io.on("connection", socket => {
   socket.on("move", (room, data) => {
     socket.broadcast.to(room).emit("move", data);
   });
+  socket.on("chat message", (room, user, message) => {
+    socket.broadcast.to(room).emit("chat message", user, message);
+  });
   socket.on("new invitation", invitation => {
     io.emit("new invitation", invitation);
     console.log(`${invitation.from} invited ${invitation.to} to the room ${invitation.room}`);
