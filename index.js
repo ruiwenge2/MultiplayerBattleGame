@@ -131,7 +131,7 @@ app.get("/play", (req, res) => {
     res.redirect("/login");
     return;
   }
-  res.render("game/playagainstcomputer.html", {loggedIn:true, user:f.getUser(req)});
+  res.render("playagainstcomputer.html", {loggedIn:true, user:f.getUser(req)});
   console.log(f.getUser(req) + " is playing against the computer");
 });
 
