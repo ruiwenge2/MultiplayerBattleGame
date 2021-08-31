@@ -12,6 +12,7 @@
       <div class="main-content">
         <audio id="chat-alert"><source src="/sounds/chat_alert.mp3"></audio>
         <p id="message">Waiting for another player to join...</p>
+        <button id="invite" onclick="invite()">Invite someone to this room</button><br>
         <div id="player1">
           <img id="player1-image" src="/img/characters/<%= character %>.png"><br>
           <p id="names"><%= character %> (<%= user %>)</p>
@@ -28,13 +29,10 @@
         <div id="chat">
           <h1>Chat</h1>
           <div id="messages"></div>
-          <input type="text" placeholder="Type your message here...">
+          <input type="text" placeholder="Type here">
         </div><br><br><br>
         <h1 id="allmoves-h1">Moves</h1>
-        <div id="allmoves">
-          
-        </div>
-
+        <div id="allmoves"></div>
       </div>
     </div>
     <script src="/js/game/character.js"></script>

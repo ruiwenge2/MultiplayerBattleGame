@@ -25,3 +25,11 @@ function focusMoves(){
   document.getElementById("allmoves").focus();
   window.scrollTo(0,document.body.scrollHeight);
 }
+function invite(){
+  promptmodal("Invite someone", "Enter the user you want to invite to this room:")
+  .then(username => {
+    socket.emit("new invitation", {to:username, from:user, room:room});
+    alertmodal("Invite someone", `You have invited ${username} to the room <span style="color:blue">${room}</span>!`)
+    .then(() => console.log("invited"));
+  });
+}

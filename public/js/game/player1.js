@@ -29,8 +29,10 @@ socket.on("joined", (username, char2) => {
   }
   document.getElementById("sound").play();
   document.getElementById("player2").style.display = "block";
-  document.getElementById("chat").style.display = "block";  document.getElementById("allmoves-h1").style.display = "block";
+  document.getElementById("chat").style.display = "block";
+  document.getElementById("allmoves-h1").style.display = "block";
   document.getElementById("message").innerHTML = "";
+  document.getElementById("invite").style.display = "none";
   otheruser = username;
   updateStatus();
   alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {

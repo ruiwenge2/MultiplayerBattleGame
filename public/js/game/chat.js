@@ -19,8 +19,11 @@ input.addEventListener("keydown", e => {
 });
 
 socket.on("chat message", (username, message) => {
+  if(!focus){
+    document.getElementById("chat-alert").play();
+  }
   messages.innerHTML += `<p>${username}: ${encodeHTML(message)}</p>`;
-    messages.scrollTo(0, messages.scrollHeight);
+  messages.scrollTo(0, messages.scrollHeight);
 })
 
 function encodeHTML(text){
