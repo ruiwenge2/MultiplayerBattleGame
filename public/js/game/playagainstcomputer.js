@@ -1,43 +1,38 @@
-var otheruser, othercharacter, otherchar, othermove;
-socket.emit("joined", room, user, character);
-
-socket.on("joined", (username, char2) => {
-  char.health = 100;
-  char.energy = 1;
-  switch(char2){
-    case "Spiderman":
-      otherchar = new Spiderman();
-      break;
-    case "Pikachu":
-      otherchar = new Pikachu();
-      break;
-    case "Hercules":
-      otherchar = new Hercules();
-      break;
-    case "Jedi":
-      otherchar = new Jedi();
-      break;
-    case "Voldemort":
-      otherchar = new Voldemort();
-      break;
-    case "Thanos":
-      otherchar = new Thanos();
-      break;
-    case "Medusa":
-      otherchar = new Medusa();
-      break;
-  }
-  document.getElementById("sound").play();
-  document.getElementById("player2").style.display = "block";
-  document.getElementById("chat").style.display = "block";
-  document.getElementById("allmoves-h1").style.display = "block";
-  document.getElementById("message").innerHTML = "";
-  document.getElementById("invite").style.display = "none";
-  otheruser = username;
-  updateStatus();
-  alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
-    showMoves();
-  });
+var otherchar, othermove;
+const characterslist = ["Spiderman", "Pikachu", "Hercules", "Jedi", "Voldemort", "Thanos", "Medusa"];
+const othercharacter = characterslist[randint(0, characterslist.length)];
+switch(othercharacter){
+  case "Spiderman":
+    otherchar = new Spiderman();
+    break;
+  case "Pikachu":
+    otherchar = new Pikachu();
+    break;
+  case "Hercules":
+    otherchar = new Hercules();
+    break;
+  case "Jedi":
+    otherchar = new Jedi();
+    break;
+  case "Voldemort":
+    otherchar = new Voldemort();
+    break;
+  case "Thanos":
+    otherchar = new Thanos();
+    break;
+  case "Medusa":
+    otherchar = new Medusa();
+    break;
+document.getElementById("sound").play();
+document.getElementById("player2").style.display = "block";
+document.getElementById("chat").style.display = "block";
+document.getElementById("allmoves-h1").style.display = "block";
+document.getElementById("message").innerHTML = "";
+document.getElementById("invite").style.display = "none";
+otheruser = username;
+updateStatus();
+alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
+  showMoves();
 });
 
 socket.on("leave", username => {

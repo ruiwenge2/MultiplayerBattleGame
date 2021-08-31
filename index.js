@@ -126,12 +126,12 @@ app.get("/howtoplay", (req, res) => {
   res.render("howtoplay.html", {loggedIn:f.loggedIn(req), user:f.getUser(req)});
 });
 
-app.get("/play", (req, res) => {
+app.get("/play", async (req, res) => {
   if(!f.loggedIn(req)){
     res.redirect("/login");
     return;
   }
-  res.render("playagainstcomputer.html", {loggedIn:true, user:f.getUser(req)});
+  res.render("playagainstcomputer.html", {user:f.getUser(req), loggedIn:true, character: (await f.getCharacter(f.getUser(req)))});
   console.log(f.getUser(req) + " is playing against the computer");
 });
 
