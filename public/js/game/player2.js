@@ -61,6 +61,7 @@ function showMoves(){
   otherrandint = undefined;
   otheroppovalue = undefined;
   document.getElementById("player2-message").innerHTML = "The other player has chosen their move. Your turn. Choose a move:";
+  document.getElementById("player1-message").innerHTML = "";
   document.getElementById("player2-moves").innerHTML = "";
   let moves = char.moves;
   for(let i of Object.keys(moves)){
