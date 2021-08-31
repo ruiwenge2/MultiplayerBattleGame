@@ -148,6 +148,6 @@ function move(text){
     document.getElementById("player1-message").innerHTML = "";
     document.getElementById("player1-moves").innerHTML = "";
     document.getElementById("player2-message").innerHTML = "Other player's turn to choose their move.";
-  updateStatus();
+    updateStatus();
   });
 }
