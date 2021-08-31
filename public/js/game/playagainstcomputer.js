@@ -23,22 +23,11 @@ switch(othercharacter){
   case "Medusa":
     otherchar = new Medusa();
     break;
-document.getElementById("sound").play();
 document.getElementById("player2").style.display = "block";
-document.getElementById("chat").style.display = "block";
 document.getElementById("allmoves-h1").style.display = "block";
-document.getElementById("message").innerHTML = "";
-document.getElementById("invite").style.display = "none";
 otheruser = username;
 updateStatus();
-alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
-  showMoves();
-});
-
-socket.on("leave", username => {
-  document.getElementById("sound").play();
-  alertmodal("Left!", `${username} has left the game!`).then(() => location.href = "/join");
-});
+showMoves();
 
 socket.on("move", async data => {
   othermove = true;

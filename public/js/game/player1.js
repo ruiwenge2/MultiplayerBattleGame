@@ -36,7 +36,7 @@ socket.on("joined", (username, char2) => {
   otheruser = username;
   updateStatus();
   alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
-   showMoves();
+    showMoves();
   });
 });
 
@@ -44,7 +44,7 @@ socket.on("joined", (username, char2) => {
    document.getElementById("sound").play();
    alertmodal("Left!", `${username} has left the game!`).then(() => location.href = "/join");
    showMoves();
- });();
+ });
 });
 
 socket.on("move", async data => {
