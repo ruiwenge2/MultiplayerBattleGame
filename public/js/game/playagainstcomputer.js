@@ -1,6 +1,7 @@
 var otherchar, othermove;
+const otheruser = "Computer";
 const characterslist = ["Spiderman", "Pikachu", "Hercules", "Jedi", "Voldemort", "Thanos", "Medusa"];
-const othercharacter = characterslist[randint(0, characterslist.length)];
+const othercharacter = characterslist[random(0, characterslist.length - 1)];
 switch(othercharacter){
   case "Spiderman":
     otherchar = new Spiderman();
@@ -23,9 +24,9 @@ switch(othercharacter){
   case "Medusa":
     otherchar = new Medusa();
     break;
+}
 document.getElementById("player2").style.display = "block";
 document.getElementById("allmoves-h1").style.display = "block";
-otheruser = username;
 updateStatus();
 showMoves();
 
