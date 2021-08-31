@@ -45,7 +45,6 @@ socket.on("joined", (username, char2) => {
    alertmodal("Left!", `${username} has left the game!`).then(() => location.href = "/join");
    showMoves();
  });
-});
 
 socket.on("move", async data => {
   othermove = true;
