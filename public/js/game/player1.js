@@ -156,4 +156,3 @@ function move(text){
   updateStatus();
   });
 }
-console.log(window.innerWidth)
