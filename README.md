@@ -5,7 +5,7 @@ Do you remember my battle game made in Python?
 Well, this time I've spent a few weeks making a multiplayer version of the game with Node.js using Socket.IO, and it's a website now!
 
 ## Features
- - See your opponents moves in real time
+ - See your opponent's moves in real time
  - Chat box to communicate with your opponent
  - Inviting users to a room
  - Play against the computer
