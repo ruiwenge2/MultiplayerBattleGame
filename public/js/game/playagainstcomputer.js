@@ -30,41 +30,26 @@ document.getElementById("allmoves-h1").style.display = "block";
 updateStatus();
 showMoves();
 
-socket.on("move", async data => {
+async function computerMove(){
   othermove = true;
-  switch(data.type){
-    case "attack":
-      othervalue = data.value;
-      break
-    case "heal":
-      othervalue = data.value;
-      break;
-    case "chances":
-      othervalue1 = data.value1;
-      othervalue2 = data.value2;
-      otherrandint = data.randint;
-      break;
-    case "owndamage":
-      othervalue1 = data.value1;
-      otheroppovalue = data.oppovalue;
-      otherrandint = data.randint;
-      break;
-  }
+  await sleep(random(1, 5));
   clear();
   focusMoves();
-  print(`${otherchar.name} (${otheruser}): ${data.move}`);
-  await otherchar.choosemove(data.move, char);
+  let allmoves = Object.keys(otherchar.moves);
+  let move = allmoves[random(0, allmoves.length - 1)];
+  print(`${otherchar.name} (${otheruser}): ${move}`);
+  await otherchar.choosemove(move, char);
   updateStatus();
   if(char.health <= 0){
-    showWinner(otherchar, otheruser, char, user);
+    showWinner2(otherchar, otheruser, char, user);
     return;
   } 
   if(otherchar.health <= 0){
-    showWinner(char, user, otherchar, otheruser);
+    showWinner2(char, user, otherchar, otheruser);
     return;
   }
   showMoves();
-});
+}
 
 function updateStatus(){
   document.getElementById("names").innerHTML = `${char.name} (${user})`;
@@ -88,6 +73,7 @@ function showMoves(){
   if(othermove){
     document.getElementById("player1-message").innerHTML = "The other player has chosen their move. Your turn. Choose a move:"
   }
+  document.getElementById("player2-message").innerHTML = "";
   document.getElementById("player1-moves").innerHTML = "";
   let moves = char.moves;
   for(let i of Object.keys(moves)){
@@ -105,39 +91,18 @@ function move(text){
   focusMoves();
   print(`${char.name} (${user}): ${text}`);
   char.choosemove(text, otherchar).then(() => {
-    let data = {};
-    data.move = text;
-    switch(type){
-      case "attack":
-        data.value = value;
-        break;
-      case "heal":
-        data.value = value;
-        break;
-      case "chances":
-        data.value1 = value1;
-        data.value2 = value2;
-        data.randint = randint;
-        break;
-      case "owndamage":
-        data.value1 = value1;
-        data.oppovalue = oppovalue;
-        data.randint = randint;
-        break;
-    }
-    data.type = type;
-    socket.emit("move", room, data);
+    updateStatus();
     if(char.health <= 0){
-      showWinner(otherchar, otheruser, char, user);
+      showWinner2(otherchar, otheruser, char, user);
       return;
-    } 
+    }
     if(otherchar.health <= 0){
-      showWinner(char, user, otherchar, otheruser);
+      showWinner2(char, user, otherchar, otheruser);
       return;
     }
     document.getElementById("player1-message").innerHTML = "";
     document.getElementById("player1-moves").innerHTML = "";
-    document.getElementById("player2-message").innerHTML = "Other player's turn to choose their move.";
-    updateStatus();
+    document.getElementById("player2-message").innerHTML = "Computer's turn to choose their move.";
+    computerMove().then(() => {});
   });
 }

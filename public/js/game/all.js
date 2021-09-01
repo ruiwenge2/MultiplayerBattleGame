@@ -252,7 +252,7 @@ class Voldemort extends Character {
     if(this.health <= 50){
       let difference = 100 - this.health;
       this.health += difference;
-      print("Voldemort got {} more health.".format(difference));
+      print(`Voldemort got ${difference} more health.`);
     } else {
       this.health += 50;
       print("Voldemort got 50 more health.");
