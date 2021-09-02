@@ -23,6 +23,7 @@ See how to play at https://multiplayerbattlegame.ruiwenge2.repl.co/howtoplay.
 ## Credits
  - @ch1ck3n for the sliding effect
  - @Bunnytoes for telling me about random numbers in javascript
+ - @Coder100 for telling me how to show users in a room a long time ago
 
 
  ## Enjoy!
