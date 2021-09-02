@@ -16,6 +16,8 @@ Here's what it looks like:
 
 See how to play at https://multiplayerbattlegame.ruiwenge2.repl.co/howtoplay.
 
+You can try it out by playing against your friends, or join the same room in different tabs. You can also play against the computer.
+
 *Important: To create an account you must open the website in a new tab.*
 
 [Click here for the GitHub repo](https://github.com/ruiwenge2/MultiplayerBattleGame)
