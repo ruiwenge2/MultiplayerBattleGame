@@ -20,7 +20,7 @@ You can try it out by playing against your friends, or join the same room in dif
 
 *Important: To create an account you must open the website in a new tab.*
 
-[Click here for the GitHub repo](https://github.com/ruiwenge2/MultiplayerBattleGame)
+### [Click here for the GitHub repo](https://github.com/ruiwenge2/MultiplayerBattleGame)
 
 ## Credits
  - @ch1ck3n for the sliding effect
