@@ -15,6 +15,7 @@ input.addEventListener("keydown", e => {
     messages.innerHTML += `<p>${user}: ${encodeHTML(input.value)}</p>`;
     input.value = "";
     messages.scrollTo(0, messages.scrollHeight);
+    input.focus();
   }
 });
 
