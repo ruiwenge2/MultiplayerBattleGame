@@ -35,7 +35,7 @@ socket.on("joined", (username, char2) => {
   document.getElementById("invite").style.display = "none";
   otheruser = username;
   updateStatus();
-  alertmodal("Joined!", `${user} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
+  alertmodal("Joined!", `${username} has joined the room and their character is ${char2}! Have fun playing!`).then(() => {
     showMoves();
   });
 });

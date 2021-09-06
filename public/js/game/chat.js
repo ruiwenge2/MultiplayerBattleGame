@@ -10,6 +10,7 @@ window.onfocus = function(){
 }
 
 input.addEventListener("keydown", e => {
+  input = document.querySelector("input");
   if(e.key == "Enter" && validMessage(input.value)){
     socket.emit("chat message", room, user, input.value);
     messages.innerHTML += `<p>${user}: ${encodeHTML(input.value)}</p>`;
