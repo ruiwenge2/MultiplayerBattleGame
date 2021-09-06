@@ -1,6 +1,6 @@
 # Hi!
 
-Do you remember my battle game made in Python?
+Do you remember my [battle game made in Python](https://replit.com/talk/share/Battle-Game-Made-With-Python/138258)?
 
 Well, this time I've spent a few weeks making a multiplayer version of the game with Node.js using Socket.IO, and it's a website now!
 
