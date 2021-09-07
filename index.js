@@ -132,7 +132,7 @@ app.get("/play", async (req, res) => {
     return;
   }
   res.render("playagainstcomputer.html", {user:f.getUser(req), loggedIn:true, character: (await f.getCharacter(f.getUser(req)))});
-  console.log(f.getUser(req) + " is playing against the computer");
+  console.log(f.getUser(req) + " is playing against the computer with character " + (await f.getCharacter(f.getUser(req))));
 });
 
 app.get("/game/:room", async (req, res) => {
