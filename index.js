@@ -120,6 +120,7 @@ app.get("/changecharacter", async (req, res) => {
   }
   await f.setCharacter(f.getUser(req), character);
   res.send("Success");
+  console.log(f.getUser(req) + " changed their character to " + character);
 });
 
 app.get("/howtoplay", (req, res) => {
