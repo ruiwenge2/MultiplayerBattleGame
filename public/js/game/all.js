@@ -321,8 +321,8 @@ class Medusa extends Character {
       this.attack(enemy, damage1);
     } else {
       await sleep(1);
-        print("The bite wasn't that bad!");
-        self.attack(enemy, damage2);
+      print("The bite wasn't that bad!");
+      this.attack(enemy, damage2);
     }
   }
   async choosemove(string, enemy){
