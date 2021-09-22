@@ -71,7 +71,7 @@ function showMoves(){
   otheroppovalue = undefined;
   document.getElementById("player1-message").innerHTML = "Your turn. Choose a move:";
   if(othermove){
-    document.getElementById("player1-message").innerHTML = "The other player has chosen their move. Your turn. Choose a move:"
+    document.getElementById("player1-message").innerHTML = "The computer has chosen their move. Your turn. Choose a move:"
   }
   document.getElementById("player2-message").innerHTML = "";
   document.getElementById("player1-moves").innerHTML = "";
