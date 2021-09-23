@@ -5,8 +5,8 @@ const io = require("socket.io")(server);
 
 const bodyParser = require('body-parser');
 const Database = require("@replit/database");
-const session = require('express-session');
 const db = new Database();
+const session = require('express-session');
 const f = require("./functions");
 const users = {};
 const characters = {};
