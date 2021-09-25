@@ -5,7 +5,6 @@ async function del(){
   let keys = await db.list();
   for(let i of keys){
     
-    }
   }
 }
 
