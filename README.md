@@ -29,3 +29,5 @@ You can try it out by playing against your friends, or join the same room in dif
 
 
  ## Enjoy!
+
+ [![Repl Talk Badge](https://replit-badge.vercel.app/api?id=145103&theme=dark&type=.svg)](https://replit.com/talk/share/Multiplayer-Battle-Game/145103)
