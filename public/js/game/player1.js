@@ -51,7 +51,7 @@ socket.on("move", async data => {
   switch(data.type){
     case "attack":
       othervalue = data.value;
-      break
+      break;
     case "heal":
       othervalue = data.value;
       break;
