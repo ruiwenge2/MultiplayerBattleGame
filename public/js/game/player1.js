@@ -144,6 +144,7 @@ function move(text){
     }
     data.type = type;
     socket.emit("move", room, data);
+    updateStatus();
     if(char.health <= 0){
       showWinner(otherchar, otheruser, char, user);
       return;
@@ -155,6 +156,5 @@ function move(text){
     document.getElementById("player1-message").innerHTML = "";
     document.getElementById("player1-moves").innerHTML = "";
     document.getElementById("player2-message").innerHTML = "Other player's turn to choose their move.";
-    updateStatus();
   });
 }
